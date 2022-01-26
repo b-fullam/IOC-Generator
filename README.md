@@ -47,7 +47,7 @@ For more information about this script, check out my article on "[Security Autom
 
 1. Download the script or use git to clone the repository
 
-2. No dependencies needed.  This script was created using Python3, and all of the necessary dependencies, are included in the standard Python installation.
+2. No extra dependencies needed.  This script was created using Python3, and all of the necessary dependencies are already included in the standard Python installation.
 
 3. The repository includes the following:
 
