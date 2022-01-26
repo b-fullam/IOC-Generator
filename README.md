@@ -2,11 +2,11 @@
 
 ### Quickly generate common Indicators of Compromise (IOCs) from files with Python.
 
-An analyst can quickly gather common Indicators of Compromise (IOCs) from a single file or directory that can then be incorporated into tools like Mandiant's IOCe.
+An analyst can quickly generate common Indicators of Compromise (IOCs) from a single file or directory that can then be incorporated into tools like Mandiant's IOCe.
 
 ``` noLineNumbers
 Python Automated IOC Generator 
-Gathers File Name, MD5 hash value, SHA-1 hash value, SHA-256 hash value, and File Size in Bytes
+File Name, MD5 hash value, SHA-1 hash value, SHA-256 hash value, and File Size in Bytes.
 
 Enter: 
 '1' for single file, or 
@@ -17,7 +17,7 @@ The file is processed and each of the IOCs are generated and output to the scree
 
 ``` noLineNumbers
 Python Automated IOC Generator 
-Gathers File Name, MD5 hash value, SHA-1 hash value, SHA-256 hash value, and File Size in Bytes
+File Name, MD5 hash value, SHA-1 hash value, SHA-256 hash value, and File Size in Bytes.
 
 Enter: 
 '1' for single entry, or 

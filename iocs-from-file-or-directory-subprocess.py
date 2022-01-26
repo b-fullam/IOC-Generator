@@ -9,7 +9,7 @@ timeStamp = time.time()
 report_time = time.strftime('%c', time.localtime(timeStamp))
 
 # create a custom string to be included at the end of the generated output
-report_time_footer = str('Artifacts generated on: ') + report_time + str('\ncreated by Python Automated IOC Generator') + str('\n\n')
+report_time_footer = str('IOCs generated on: ') + report_time + str('\ncreated by Python Automated IOC Generator') + str('\n\n')
 
 #/////////////  BEGIN -- Generate IOC artifacts
 #///////////// File Name, MD5 hash, SHA-1 hash, File size in bytes
@@ -102,7 +102,7 @@ def directory_as_input(arg):
 #/////////////  Begin -- MAIN 
 
 def main():
-    print("\nPython Automated IOC Generator \nGathers File Name, MD5 hash value, SHA-1 hash value, and File Size in Bytes")
+    print("\nPython Automated IOC Generator \nFile Name, MD5 hash value, SHA-1 hash value, and File Size in Bytes.")
 
     # Prompt user for input of a single entry, or to select a directory of files to submit as input
     single_or_multiple_entries = int(input("\nEnter: \n'1' for single entry, or \n'2' to select a directory of files as input: "))
@@ -114,7 +114,7 @@ def main():
         f.close()
         print(report_time_footer)
     elif single_or_multiple_entries == 2:
-        directory_as_input(input("\nEnter path to directory of files: "))
+        directory_as_input(input("\nEnter path to directory: "))
     else:
         print("\n Please enter a valid option! \n")
 
