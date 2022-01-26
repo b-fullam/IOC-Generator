@@ -1,6 +1,6 @@
 # IOC-Generator
 
-### Quickly generate common IOCs from files with Python.
+### Quickly generate common Indicators of Compromise (IOCs) from files with Python.
 
 An analyst can quickly gather common Indicators of Compromise (IOCs) from a single file or directory that can then be incorporated into tools like Mandiant's IOCe.
 
