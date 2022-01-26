@@ -1,6 +1,6 @@
 import time
 from pathlib import Path
-import hashlib
+import subprocess
 
 # grab the epoch timestamp at run time and convert to human-readable for the artifact output document footer information
 timeStamp = time.time()
@@ -11,9 +11,8 @@ report_time = time.strftime('%c', time.localtime(timeStamp))
 # create a custom string to be included at the end of the generated output
 report_time_footer = str('Artifacts generated on: ') + report_time + str('\ncreated by Python Automated IOC Generator') + str('\n\n')
 
-
-#/////////////  BEGIN -- Generate IOCs
-#///////////// File Name, MD5 hash, SHA-1 hash, SHA-256 hash, File size in bytes
+#/////////////  BEGIN -- Generate IOC artifacts
+#///////////// File Name, MD5 hash, SHA-1 hash, File size in bytes
 
 # create and open a file named 'output.txt' to write our data to
 f = open("output.txt", "w")
@@ -23,8 +22,9 @@ def iocGrab(arg):
     # store a single entry value from direct user input, or from the directory_as_input() function
     target_file = arg
 
-    # use Path module to access .stat results -- 'name' to grab the file name, and 'st_size' to grab the file size in bytes    
+    # use Path module to access .stat results and st_size to grab the file size in bytes    
     file_ = Path(target_file)
+    
     fileName = (file_.name)
     fileStats = (file_.stat().st_size)
 
@@ -33,61 +33,49 @@ def iocGrab(arg):
     print(fileNameOutput)
     f.write(fileNameOutput)
 
-    # /// Hashing START
-
-    # Open and read the file contents to create the MD5 hash of the file
-    md5_hash = hashlib.sha1()
-    with open(target_file,"rb") as f4:
-        # Read and update hash string value in blocks of 4K
-        for byte_block in iter(lambda: f4.read(4096),b""):
-            md5_hash.update(byte_block)
-        md5hash = (md5_hash.hexdigest())
-
-    # Output the SHA256 hash value created by hashlib.sha256() as reference
-    md5Data = str("MD5: " + md5hash + "\n")
+    # use subprocess to call the md5 command in the os
+    process = subprocess.Popen(['md5', target_file], 
+                               stdout=subprocess.PIPE,
+                               encoding='utf-8')
+    data = process.communicate()
+    # Store the MD5 hash value as md5Data, print output to screen, as well as write to 'output.txt'
+    md5Data = data[0]
     print(md5Data)
     f.write(md5Data)
 
-
-    # Open and read the file contents to create the SHA-1 hash of the file
-    sha1_hash = hashlib.sha1()
-    with open(target_file,"rb") as f3:
-        # Read and update hash string value in blocks of 4K
-        for byte_block in iter(lambda: f3.read(4096),b""):
-            sha1_hash.update(byte_block)
-        sha1hash = (sha1_hash.hexdigest())
-
-    # Output the SHA256 hash value created by hashlib.sha256() as reference
-    sha1Data = str("SHA-1: " + sha1hash + "\n")
+    # use subprocess to call the shasum command using the '-a' and '1' options in the os
+    process = subprocess.Popen(['shasum', '-a', '1', target_file], 
+                               stdout=subprocess.PIPE,
+                               encoding='utf-8')
+    data2 = process.communicate()
+    # Store the SHA-1 hash value as sha1Data, print output to screen, as well as write to 'output.txt'
+    sha1Data = str("SHA-1: ") + str(data2[0])
     print(sha1Data)
     f.write(sha1Data)
 
-
-    # Open and read the file contents to create the SHA-256 hash of the file
-    sha256_hash = hashlib.sha256()
-    with open(target_file,"rb") as f2:
-        # Read and update hash string value in blocks of 4K
-        for byte_block in iter(lambda: f2.read(4096),b""):
-            sha256_hash.update(byte_block)
-        sha256hash = (sha256_hash.hexdigest())
-
-    # Output the SHA256 hash value created by hashlib.sha256() as reference
-    sha256Data = str("SHA-256: " + sha256hash + "\n")
+    # use subprocess to call the shasum command using the '-a' and '256' options in the os
+    process = subprocess.Popen(['shasum', '-a', '256', target_file], 
+                               stdout=subprocess.PIPE,
+                               encoding='utf-8')
+    data3 = process.communicate()
+    # Store the SHA-1 hash value as sha1Data, print output to screen, as well as write to 'output.txt'
+    sha256Data = str("SHA-256: ") + str(data3[0])
     print(sha256Data)
     f.write(sha256Data)
 
-    # /// Hashing END
-
-    # Create a custom string to show the file size in bytes
+    
     fileSizeBytes = ("Size in bytes:  " + str(fileStats) + ("\n\n"))
 
     # Store the 'size' value as fileSizeBytes, create a custom string, print output to screen, as well as write to 'output.txt'
     print(fileSizeBytes)
+
+    
+
     f.write(fileSizeBytes)
 
     return
 
-#/////////////  END -- Generate IOCs
+#/////////////  END -- Generate IOC artifacts
     
 #/////////////  BEGIN -- Directory as input
 
@@ -99,13 +87,9 @@ def directory_as_input(arg):
     # initialize list 'i'
     i = [ ]
 
-    # use Path to get the file paths for each file in the directory
     entries = Path(path_of_the_directory)
     for i in entries.iterdir():
-        # send a concatenated value using "i.parent" and "i.name" to create the relative path to each file
-        # which will appears as "directory-indicated/filename" as the loop iterates over the list 'i"
         grabPath = (i.parent / i.name)
-        # the 'grabPath' value is then passed to the iocGrab() function
         iocGrab(grabPath)
 
     f.write(report_time_footer)

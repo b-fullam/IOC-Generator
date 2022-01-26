@@ -47,18 +47,14 @@ For more information about this script, check out my article on "[Security Autom
 
 1. Download the script or use git to clone the repository
 
-2. Install dependencies.  This script was created using Python3, and I've included a requirements.txt file listing the necessary dependencies, which can be installed using the following command:
-
-``` nolinenumbers
-pip3 install -r requirements.txt
-```
+2. No dependencies needed.  This script was created using Python3, and all of the necessary dependencies, are included in the standard Python installation.
 
 3. The repository includes the following:
 
-* The finished version of the Python script (file name ending in ".py")
+* The finished version of the script using only using standard Python libraries (file name ending in ".py")
+* An alternate version of the Python script using commands on the host system via "subprocess" (file name ending in "-subprocess.py")
 * License
 * README.md file
-* requirements.txt
 * 2innocent.pdf sample file
 * ioc-samples directory that contains 2 sample files
 
@@ -69,7 +65,8 @@ pip3 install -r requirements.txt
 ├── README.md
 ├── ioc-samples
 ├── iocs-from-file-or-directory.py
-└── requirements.txt
+└── iocs-from-file-or-directory-subprocess.py
+```
 
 1 directory, 5 files
 There are 5 files and 1 directory in total:
