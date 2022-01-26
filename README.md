@@ -6,7 +6,7 @@ An analyst can quickly gather common Indicators of Compromise (IOCs) from a sing
 
 ``` noLineNumbers
 Python Automated IOC Generator 
-Gathers File Name, MD5 hash value, SHA-1 hash value, and File Size in Bytes
+Gathers File Name, MD5 hash value, SHA-1 hash value, SHA-256 hash value, and File Size in Bytes
 
 Enter: 
 '1' for single file, or 
@@ -17,7 +17,7 @@ The file is processed and each of the IOCs are generated and output to the scree
 
 ``` noLineNumbers
 Python Automated IOC Generator 
-Gathers File Name, MD5 hash value, SHA-1 hash value, and File Size in Bytes
+Gathers File Name, MD5 hash value, SHA-1 hash value, SHA-256 hash value, and File Size in Bytes
 
 Enter: 
 '1' for single entry, or 
@@ -32,10 +32,12 @@ MD5 (2innocent.pdf) = 2942bfabb3d05332b66eb128e0842cff
 
 SHA-1: 90ffd2359008d82298821d16b21778c5c39aec36  2innocent.pdf
 
-Size in bytes: 13264
+SHA-256: 3df79d34abbca99308e79cb94461c1893582604d68329a41fd4bec1885e6adb4  2innocent.pdf
+
+Size in bytes:  13264
 
 
-Artifacts generated on: Tue Jan 25 14:33:08 2022
+Artifacts generated on: Wed Jan 26 15:47:58 2022
 created by Python Automated IOC Generator
 ```
 
@@ -72,5 +74,5 @@ pip3 install -r requirements.txt
 1 directory, 5 files
 There are 5 files and 1 directory in total:
 ```
-The directory, which contains 2innocent.pdf and 1HIGHLY_MALICIOUS.txt, are sample files for you to test the "directory_as_input" functionality included in the script to see first hand how multiple files are processed.
+The directory, which contains 2innocent.pdf and highly_malicious.txt, are harmless sample files for you to test the "directory_as_input" functionality included in the script to see first hand how multiple files are processed.
 
