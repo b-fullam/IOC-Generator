@@ -85,7 +85,7 @@ def main():
     print("\nPython Automated IOC Generator \nGathers File Name, MD5 hash value, SHA-1 hash value, and File Size in Bytes")
 
     # Prompt user for input of a single entry, or to select a directory of files to submit as input
-    single_or_multiple_entries = int(input("\nEnter: \n'1' for single file, or \n'2' to select a directory of files as input: "))
+    single_or_multiple_entries = int(input("\nEnter: \n'1' for single entry, or \n'2' to select a directory of files as input: "))
     
     # Conditional statement to handle user input and select the appropriate function
     if single_or_multiple_entries == 1:
