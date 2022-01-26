@@ -28,16 +28,16 @@ Enter path to file: 2innocent.pdf
 File name: 2innocent.pdf
 
 
-MD5 (2innocent.pdf) = 2942bfabb3d05332b66eb128e0842cff
+MD5: 90ffd2359008d82298821d16b21778c5c39aec36
 
-SHA-1: 90ffd2359008d82298821d16b21778c5c39aec36  2innocent.pdf
+SHA-1: 90ffd2359008d82298821d16b21778c5c39aec36
 
-SHA-256: 3df79d34abbca99308e79cb94461c1893582604d68329a41fd4bec1885e6adb4  2innocent.pdf
+SHA-256: 3df79d34abbca99308e79cb94461c1893582604d68329a41fd4bec1885e6adb4
 
 Size in bytes:  13264
 
 
-Artifacts generated on: Wed Jan 26 15:47:58 2022
+Artifacts generated on: Wed Jan 26 16:40:46 2022
 created by Python Automated IOC Generator
 ```
 
