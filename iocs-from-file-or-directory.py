@@ -1,7 +1,6 @@
-import subprocess
-import os
 import time
-
+from pathlib import Path
+import subprocess
 
 # grab the epoch timestamp at run time and convert to human-readable for the artifact output document footer information
 timeStamp = time.time()
@@ -23,10 +22,16 @@ def iocGrab(arg):
     # store a single entry value from direct user input, or from the directory_as_input() function
     target_file = arg
 
+    # use Path module to access .stat results and st_size to grab the file size in bytes    
+    file_ = Path(target_file)
+    
+    fileName = (file_.name)
+    fileStats = (file_.stat().st_size)
+
     # Grab the name of the file, create a custom string, print output to screen, as well as write to 'output.txt'
-    fileName = "\nFile name: " + target_file + "\n\n"
-    print(fileName)
-    f.write(fileName)
+    fileNameOutput = "\nFile name: " + fileName + "\n\n"
+    print(fileNameOutput)
+    f.write(fileNameOutput)
 
     # use subprocess to call the md5 command in the os
     process = subprocess.Popen(['md5', target_file], 
@@ -48,11 +53,24 @@ def iocGrab(arg):
     print(sha1Data)
     f.write(sha1Data)
 
-    # use stat module's os.stat results and st_size to grab the file size in bytes
-    size = os.stat(target_file).st_size
+    # use subprocess to call the shasum command using the '-a' and '256' options in the os
+    process = subprocess.Popen(['shasum', '-a', '256', target_file], 
+                               stdout=subprocess.PIPE,
+                               encoding='utf-8')
+    data3 = process.communicate()
+    # Store the SHA-1 hash value as sha1Data, print output to screen, as well as write to 'output.txt'
+    sha256Data = str("SHA-256: ") + str(data3[0])
+    print(sha256Data)
+    f.write(sha256Data)
+
+    
+    fileSizeBytes = ("Size in bytes:  " + str(fileStats) + ("\n\n"))
+
     # Store the 'size' value as fileSizeBytes, create a custom string, print output to screen, as well as write to 'output.txt'
-    fileSizeBytes = str("Size in bytes: ") + str(size) + str("\n\n")
     print(fileSizeBytes)
+
+    
+
     f.write(fileSizeBytes)
 
     return
@@ -69,8 +87,10 @@ def directory_as_input(arg):
     # initialize list 'i'
     i = [ ]
 
-    for i in os.listdir(path_of_the_directory):
-            iocGrab(i)
+    entries = Path(path_of_the_directory)
+    for i in entries.iterdir():
+        grabPath = (i.parent / i.name)
+        iocGrab(grabPath)
 
     f.write(report_time_footer)
     f.close()
@@ -89,7 +109,7 @@ def main():
     
     # Conditional statement to handle user input and select the appropriate function
     if single_or_multiple_entries == 1:
-        iocGrab(input("\nEnter path to file: "))
+        iocGrab((input("\nEnter path to file: ")))
         f.write(report_time_footer)
         f.close()
         print(report_time_footer)
