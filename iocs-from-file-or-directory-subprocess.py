@@ -102,7 +102,7 @@ def directory_as_input(arg):
 #/////////////  Begin -- MAIN 
 
 def main():
-    print("\nPython Automated IOC Generator \nFile Name, MD5 hash value, SHA-1 hash value, and File Size in Bytes.")
+    print("\nPython Automated IOC Generator \nFile Name, MD5 hash value, SHA-1 hash value, SHA-256 hash value, and File Size in Bytes.")
 
     # Prompt user for input of a single entry, or to select a directory of files to submit as input
     single_or_multiple_entries = int(input("\nEnter: \n'1' for single entry, or \n'2' to select a directory of files as input: "))
