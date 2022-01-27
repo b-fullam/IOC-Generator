@@ -58,7 +58,7 @@ def iocGrab(arg):
                                stdout=subprocess.PIPE,
                                encoding='utf-8')
     data3 = process.communicate()
-    # Store the SHA-1 hash value as sha1Data, print output to screen, as well as write to 'output.txt'
+    # Store the SHA-256 hash value as sha1Data, print output to screen, as well as write to 'output.txt'
     sha256Data = str("SHA-256: ") + str(data3[0])
     print(sha256Data)
     f.write(sha256Data)

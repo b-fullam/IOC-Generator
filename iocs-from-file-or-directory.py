@@ -36,14 +36,14 @@ def iocGrab(arg):
     # /// Hashing START
 
     # Open and read the file contents to create the MD5 hash of the file
-    md5_hash = hashlib.sha1()
+    md5_hash = hashlib.md5()
     with open(target_file,"rb") as f4:
         # Read and update hash string value in blocks of 4K
         for byte_block in iter(lambda: f4.read(4096),b""):
             md5_hash.update(byte_block)
         md5hash = (md5_hash.hexdigest())
 
-    # Output the SHA256 hash value created by hashlib.sha256() as reference
+    # Output the MD5 hash value created by hashlib.md5() as reference
     md5Data = str("MD5: " + md5hash + "\n")
     print(md5Data)
     f.write(md5Data)
@@ -57,7 +57,7 @@ def iocGrab(arg):
             sha1_hash.update(byte_block)
         sha1hash = (sha1_hash.hexdigest())
 
-    # Output the SHA256 hash value created by hashlib.sha256() as reference
+    # Output the SHA-1 hash value created by hashlib.sha1() as reference
     sha1Data = str("SHA-1: " + sha1hash + "\n")
     print(sha1Data)
     f.write(sha1Data)
@@ -71,7 +71,7 @@ def iocGrab(arg):
             sha256_hash.update(byte_block)
         sha256hash = (sha256_hash.hexdigest())
 
-    # Output the SHA256 hash value created by hashlib.sha256() as reference
+    # Output the SHA-256 hash value created by hashlib.sha256() as reference
     sha256Data = str("SHA-256: " + sha256hash + "\n")
     print(sha256Data)
     f.write(sha256Data)
@@ -102,7 +102,7 @@ def directory_as_input(arg):
     # use Path to get the file paths for each file in the directory
     entries = Path(path_of_the_directory)
     for i in entries.iterdir():
-        # send a concatenated value using "i.parent" and "i.name" to create the relative path to each file
+        # send a concatenated value using "i.parent" and "i.name" to create the relative path for each file
         # which will appears as "directory-indicated/filename" as the loop iterates over the list 'i"
         grabPath = (i.parent / i.name)
         # the 'grabPath' value is then passed to the iocGrab() function
