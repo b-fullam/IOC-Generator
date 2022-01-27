@@ -55,8 +55,8 @@ For more information about this script, check out my article on "[Security Autom
 * An alternate version of the Python script using commands on the host system via "subprocess" (file name ending in "-subprocess.py")
 * License
 * README.md file
-* 2innocent.pdf sample file
-* ioc-samples directory that contains 2 sample files
+* 2innocent.pdf sample file for testing
+* ioc-samples directory that contains 2 sample files for testing
 
 ``` nolinenumbers
 .
