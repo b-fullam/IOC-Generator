@@ -41,7 +41,7 @@ Artifacts generated on: Wed Jan 26 16:40:46 2022
 created by Python Automated IOC Generator
 ```
 
-For more information about this script, check out my article on "[Security Automation with Python — Quickly generate common IOCs from files with Python](https://www.brettfullam.com/security-automation-with-python-quickly-generate-common-iocs-from-files-with-python/  "Quickly generate common IOCs from files with Python")." 
+For more information about this script, check out my article on "[Security Automation with Python — Quickly generate common IOCs from files with Python](https://www.brettfullam.com/security-automation-with-python-quickly-generate-common-io-cs-from-files-with-python  "Quickly generate common IOCs from files with Python")." 
 
 ## Getting Started
 
