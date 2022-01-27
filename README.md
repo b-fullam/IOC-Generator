@@ -66,7 +66,6 @@ For more information about this script, check out my article on "[Security Autom
 ├── ioc-samples
 ├── iocs-from-file-or-directory.py
 └── iocs-from-file-or-directory-subprocess.py
-```
 
 1 directory, 5 files
 There are 5 files and 1 directory in total:
